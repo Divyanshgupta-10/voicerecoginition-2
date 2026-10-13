@@ -1,6 +1,7 @@
 .venv/
 .venv-win/
 work/
+.runtime-tmp/
 __pycache__/
 *.py[cod]
 .pytest_cache/
