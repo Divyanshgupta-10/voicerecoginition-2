@@ -1,0 +1,12 @@
+.venv/
+.venv-win/
+work/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+config/settings.json
+models/vosk-model-*/
+frontend/node_modules/
+frontend/dist/
+*.log

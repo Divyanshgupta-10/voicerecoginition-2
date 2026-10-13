@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "finger_order": ["thumb", "index", "middle", "ring", "pinky"],
+  "gestures": [
+    {"name": "Hello", "command": "HELLO", "description": "Greeting pose example", "phrases": ["hello", "hi", "hey there"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
+    {"name": "Help", "command": "HELP", "description": "Help request pose example", "phrases": ["help", "please help"], "fingers": {"thumb": 95, "index": 30, "middle": 145, "ring": 145, "pinky": 145}},
+    {"name": "Thank you", "command": "THANK_YOU", "description": "Thank-you pose example", "phrases": ["thank you", "thanks"], "fingers": {"thumb": 35, "index": 35, "middle": 35, "ring": 35, "pinky": 35}},
+    {"name": "Yes", "command": "YES", "description": "Yes pose example", "phrases": ["yes", "yeah", "yep"], "fingers": {"thumb": 145, "index": 145, "middle": 145, "ring": 145, "pinky": 145}},
+    {"name": "No", "command": "NO", "description": "No pose example", "phrases": ["no", "nope"], "fingers": {"thumb": 40, "index": 35, "middle": 145, "ring": 145, "pinky": 145}},
+    {"name": "Stop", "command": "STOP", "description": "Safe stop / open pose", "phrases": ["stop", "halt", "freeze"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
+    {"name": "Open hand", "command": "OPEN_HAND", "description": "Extend all fingers", "phrases": ["open hand", "open the hand", "open up"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
+    {"name": "Close hand", "command": "CLOSE_HAND", "description": "Curl all fingers", "phrases": ["close hand", "close the hand", "make a fist"], "fingers": {"thumb": 145, "index": 145, "middle": 145, "ring": 145, "pinky": 145}}
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "mode": "simulator",
+  "baud_rate": 115200,
+  "sample_rate": 16000,
+  "microphone_device": null,
+  "confidence_threshold": 0.35,
+  "command_cooldown_seconds": 1.5,
+  "safe_servo_degrees": [10, 170]
+}
