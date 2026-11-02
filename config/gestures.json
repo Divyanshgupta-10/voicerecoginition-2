@@ -1,14 +1,707 @@
 {
-  "version": 1,
-  "finger_order": ["thumb", "index", "middle", "ring", "pinky"],
+  "version": 4,
+  "language": "Static ASL alphabet handshapes, numeral prototypes, ILY, and nonverbal gesture poses",
+  "finger_order": [
+    "thumb",
+    "index",
+    "middle",
+    "ring",
+    "pinky"
+  ],
+  "angle_convention": "Initial targets only: 25 degrees extended, 85 degrees partial curl, and 145 degrees flexed. Calibrate after construction; no wrist motion is used.",
   "gestures": [
-    {"name": "Hello", "command": "HELLO", "description": "Greeting pose example", "phrases": ["hello", "hi", "hey there"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
-    {"name": "Help", "command": "HELP", "description": "Help request pose example", "phrases": ["help", "please help"], "fingers": {"thumb": 95, "index": 30, "middle": 145, "ring": 145, "pinky": 145}},
-    {"name": "Thank you", "command": "THANK_YOU", "description": "Thank-you pose example", "phrases": ["thank you", "thanks"], "fingers": {"thumb": 35, "index": 35, "middle": 35, "ring": 35, "pinky": 35}},
-    {"name": "Yes", "command": "YES", "description": "Yes pose example", "phrases": ["yes", "yeah", "yep"], "fingers": {"thumb": 145, "index": 145, "middle": 145, "ring": 145, "pinky": 145}},
-    {"name": "No", "command": "NO", "description": "No pose example", "phrases": ["no", "nope"], "fingers": {"thumb": 40, "index": 35, "middle": 145, "ring": 145, "pinky": 145}},
-    {"name": "Stop", "command": "STOP", "description": "Safe stop / open pose", "phrases": ["stop", "halt", "freeze"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
-    {"name": "Open hand", "command": "OPEN_HAND", "description": "Extend all fingers", "phrases": ["open hand", "open the hand", "open up"], "fingers": {"thumb": 25, "index": 25, "middle": 25, "ring": 25, "pinky": 25}},
-    {"name": "Close hand", "command": "CLOSE_HAND", "description": "Curl all fingers", "phrases": ["close hand", "close the hand", "make a fist"], "fingers": {"thumb": 145, "index": 145, "middle": 145, "ring": 145, "pinky": 145}}
+    {
+      "name": "I love you (ILY)",
+      "command": "ILY",
+      "category": "ASL static sign",
+      "description": "Informal ASL I-L-Y handshape. A static hand pose; palm orientation is fixed by how the hand is mounted.",
+      "phrases": [
+        "i love you",
+        "show i love you",
+        "ily"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/topics/ily.htm",
+      "reference_note": "ASL ILY combines I, L, and Y handshapes."
+    },
+    {
+      "name": "ASL number 1",
+      "command": "ASL_NUMBER_1",
+      "category": "ASL numeral",
+      "description": "Index extended; other fingers and thumb curled. Mount the hand in the intended palm orientation.",
+      "phrases": [
+        "number one",
+        "show number one"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Static numeral handshape; check orientation against the reference."
+    },
+    {
+      "name": "ASL number 2",
+      "command": "ASL_NUMBER_2",
+      "category": "ASL numeral",
+      "description": "Index and middle extended; requires those fingers to be visibly separated by the hand construction.",
+      "phrases": [
+        "number two",
+        "show number two"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 25,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Static numeral handshape. The mechanism has no finger-spread axis."
+    },
+    {
+      "name": "ASL number 3",
+      "command": "ASL_NUMBER_3",
+      "category": "ASL numeral",
+      "description": "Thumb, index, and middle extended; ring and pinky curled.",
+      "phrases": [
+        "number three",
+        "show number three"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 25,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Static numeral handshape; ASL 3 uses thumb, index, and middle."
+    },
+    {
+      "name": "ASL number 4",
+      "command": "ASL_NUMBER_4",
+      "category": "ASL numeral",
+      "description": "Four fingers extended, thumb curled.",
+      "phrases": [
+        "number four",
+        "show number four"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Static numeral handshape; natural finger spacing matters."
+    },
+    {
+      "name": "ASL number 5",
+      "command": "ASL_NUMBER_5",
+      "category": "ASL numeral",
+      "description": "All five fingers extended.",
+      "phrases": [
+        "number five",
+        "show number five"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Static numeral handshape; natural finger spacing matters."
+    },
+    {
+      "name": "Okay circle gesture",
+      "command": "OKAY_CIRCLE",
+      "category": "nonverbal gesture",
+      "description": "Thumb and index form a circle; the other three fingers extend. Not an ASL word. Requires the thumb servo to reach the index; gesture meanings vary by culture.",
+      "phrases": [
+        "okay gesture",
+        "ok hand",
+        "show okay"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 85,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://southeast.adl.org/resources/hate-symbol/okay-hand-gesture",
+      "reference_note": "Prototype assumes thumb-index contact is mechanically achievable."
+    },
+    {
+      "name": "Middle finger gesture",
+      "command": "MIDDLE_FINGER",
+      "category": "nonverbal gesture",
+      "description": "Middle finger extended while the other fingers curl. Obscene in many contexts; this is a gesture, not an ASL lexical sign.",
+      "phrases": [
+        "middle finger",
+        "fuck you",
+        "flip off"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 145,
+        "middle": 25,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://dictionary.cambridge.org/us/dictionary/english/middle-finger?topic=insults-and-abuse",
+      "reference_note": "A static gesture. Palm direction must be selected in the physical mounting."
+    },
+    {
+      "name": "Peace / V gesture",
+      "command": "PEACE_V",
+      "category": "nonverbal gesture",
+      "description": "Index and middle extended; remaining fingers curl. Recognition depends on fixed palm orientation and finger separation.",
+      "phrases": [
+        "peace sign",
+        "victory sign",
+        "show peace"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 25,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "",
+      "reference_note": "Static gesture pose; no wrist motion."
+    },
+    {
+      "name": "Thumbs up",
+      "command": "THUMBS_UP",
+      "category": "nonverbal gesture",
+      "description": "Thumb extended and four fingers curled. The hand must be mounted with the thumb pointing upward.",
+      "phrases": [
+        "thumbs up",
+        "show thumbs up",
+        "approval gesture"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "",
+      "reference_note": "Static gesture pose; orientation is fixed by construction."
+    },
+    {
+      "name": "Shaka / hang loose",
+      "command": "SHAKA",
+      "category": "nonverbal gesture",
+      "description": "Thumb and pinky extended; the middle three fingers curl. The hand must be mounted in the intended orientation.",
+      "phrases": [
+        "shaka",
+        "hang loose",
+        "call me gesture"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 25
+      },
+      "reference_url": "",
+      "reference_note": "Static gesture pose; regional meaning varies."
+    },
+    {
+      "name": "Rock horns",
+      "command": "ROCK_HORNS",
+      "category": "nonverbal gesture",
+      "description": "Index and pinky extended; middle and ring fingers curl with the thumb holding them.",
+      "phrases": [
+        "rock on",
+        "metal horns",
+        "rock horns"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 25
+      },
+      "reference_url": "",
+      "reference_note": "Static gesture pose; thumb placement depends on the mechanism."
+    },
+    {
+      "name": "Open palm",
+      "command": "OPEN_HAND",
+      "category": "mechanical test",
+      "description": "All fingers extended. A generic hand pose, not labeled as hello or stop.",
+      "phrases": [
+        "open palm",
+        "open hand",
+        "open mechanical pose"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "",
+      "reference_note": "Static pose; palm orientation is fixed by construction."
+    },
+    {
+      "name": "Closed fist",
+      "command": "CLOSE_HAND",
+      "category": "mechanical test",
+      "description": "All fingers curled. A generic hand pose, not labeled as yes.",
+      "phrases": [
+        "closed fist",
+        "close hand",
+        "close mechanical pose"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "",
+      "reference_note": "Static pose; thumb tuck depends on construction."
+    },
+    {
+      "name": "ASL letter A",
+      "command": "ASL_LETTER_A",
+      "category": "ASL alphabet handshape",
+      "description": "Closed fingers with the thumb extended along the side. Single letter pose only; not a spelled word.",
+      "phrases": [
+        "letter A",
+        "show asl letter a"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "ASL manual alphabet handshape. Fixed palm orientation and thumb placement must match the reference."
+    },
+    {
+      "name": "ASL letter B",
+      "command": "ASL_LETTER_B",
+      "category": "ASL alphabet handshape",
+      "description": "Four fingers extended together; thumb folds across the palm. Single letter pose only.",
+      "phrases": [
+        "letter B",
+        "show asl letter b"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Requires thumb to rest across the palm; fixed palm direction matters."
+    },
+    {
+      "name": "ASL letter C",
+      "command": "ASL_LETTER_C",
+      "category": "ASL alphabet handshape",
+      "description": "Fingers and thumb curve into a C-like opening. Single letter pose only.",
+      "phrases": [
+        "letter C",
+        "show asl letter c"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 85,
+        "middle": 85,
+        "ring": 85,
+        "pinky": 85
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Requires coordinated partial curl and a visible curved gap; tune after construction."
+    },
+    {
+      "name": "ASL letter D",
+      "command": "ASL_LETTER_D",
+      "category": "ASL alphabet handshape",
+      "description": "Index extended; other fingers curl with thumb placed near them. Single letter pose only.",
+      "phrases": [
+        "letter D",
+        "show asl letter d"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Thumb placement and palm orientation need physical review."
+    },
+    {
+      "name": "ASL letter E",
+      "command": "ASL_LETTER_E",
+      "category": "ASL alphabet handshape",
+      "description": "Fingers curl toward the thumb. Single letter pose only.",
+      "phrases": [
+        "letter E",
+        "show asl letter e"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Requires thumb to meet or cover curled fingertips; verify the mechanism can do this."
+    },
+    {
+      "name": "ASL letter F",
+      "command": "ASL_LETTER_F",
+      "category": "ASL alphabet handshape",
+      "description": "Thumb and index meet; middle, ring, and pinky extend. Single letter pose only.",
+      "phrases": [
+        "letter F",
+        "show asl letter f"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 85,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Same basic finger configuration as the okay-circle preset; contact and palm orientation determine the recognizable letter."
+    },
+    {
+      "name": "ASL letter I",
+      "command": "ASL_LETTER_I",
+      "category": "ASL alphabet handshape",
+      "description": "Pinky extended; other fingers curl. Single letter pose only.",
+      "phrases": [
+        "letter I",
+        "show asl letter i"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 25
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Static pinky-up shape; orientation matters."
+    },
+    {
+      "name": "ASL letter L",
+      "command": "ASL_LETTER_L",
+      "category": "ASL alphabet handshape",
+      "description": "Thumb and index extended; other fingers curl. Single letter pose only.",
+      "phrases": [
+        "letter L",
+        "show asl letter l"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Thumb must extend in the correct plane."
+    },
+    {
+      "name": "ASL letter M",
+      "command": "ASL_LETTER_M",
+      "category": "ASL alphabet handshape",
+      "description": "Fingers curl over the thumb. Single letter pose only.",
+      "phrases": [
+        "letter M",
+        "show asl letter m"
+      ],
+      "fingers": {
+        "thumb": 130,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Finger angles alone cannot guarantee thumb-under-fingers placement; mechanical prototype candidate."
+    },
+    {
+      "name": "ASL letter N",
+      "command": "ASL_LETTER_N",
+      "category": "ASL alphabet handshape",
+      "description": "Fingers curl over the thumb in a compact handshape. Single letter pose only.",
+      "phrases": [
+        "letter N",
+        "show asl letter n"
+      ],
+      "fingers": {
+        "thumb": 115,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Shares the fist target with M in this five-angle model; thumb placement distinctions are not actuated separately."
+    },
+    {
+      "name": "ASL letter O",
+      "command": "ASL_LETTER_O",
+      "category": "ASL alphabet handshape",
+      "description": "Fingers and thumb curve toward an O-like opening. Single letter pose only.",
+      "phrases": [
+        "letter O",
+        "show asl letter o"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 85,
+        "middle": 85,
+        "ring": 85,
+        "pinky": 85
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Same coarse angles as C; fingertip curvature/contact geometry must distinguish the opening."
+    },
+    {
+      "name": "ASL letter S",
+      "command": "ASL_LETTER_S",
+      "category": "ASL alphabet handshape",
+      "description": "Closed fist with thumb across the front. Single letter pose only.",
+      "phrases": [
+        "letter S",
+        "show asl letter s"
+      ],
+      "fingers": {
+        "thumb": 100,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Same coarse targets as a fist test; thumb placement/palm view is not encoded by the angles."
+    },
+    {
+      "name": "ASL letter T",
+      "command": "ASL_LETTER_T",
+      "category": "ASL alphabet handshape",
+      "description": "Closed fingers with thumb positioned between fingers. Single letter pose only.",
+      "phrases": [
+        "letter T",
+        "show asl letter t"
+      ],
+      "fingers": {
+        "thumb": 85,
+        "index": 145,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Thumb-to-finger placement must be designed into the mechanism."
+    },
+    {
+      "name": "ASL letter U",
+      "command": "ASL_LETTER_U",
+      "category": "ASL alphabet handshape",
+      "description": "Index and middle extended together; remaining fingers curl. Single letter pose only.",
+      "phrases": [
+        "letter U",
+        "show asl letter u"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 25,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Index and middle should remain adjacent; no finger-spread servo is available."
+    },
+    {
+      "name": "ASL letter W",
+      "command": "ASL_LETTER_W",
+      "category": "ASL alphabet handshape",
+      "description": "Index, middle, and ring extended; thumb and pinky curled. Single letter pose only.",
+      "phrases": [
+        "letter W",
+        "show asl letter w"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "Static handshape; fixed palm orientation matters."
+    },
+    {
+      "name": "ASL letter X",
+      "command": "ASL_LETTER_X",
+      "category": "ASL alphabet handshape",
+      "description": "Index bent into a hook; remaining fingers curl. Single letter pose only.",
+      "phrases": [
+        "letter X",
+        "show asl letter x"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 85,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "https://www.strongasl.com/american-sign-language-dictionary/alphabet",
+      "reference_note": "A single flex joint may not reproduce the hooked fingertip; tune after construction."
+    },
+    {
+      "name": "ASL number 6",
+      "command": "ASL_NUMBER_6",
+      "category": "ASL numeral prototype",
+      "description": "Thumb touches pinky while the other fingers extend. Single static numeral shape.",
+      "phrases": [
+        "number 6",
+        "show asl number 6"
+      ],
+      "fingers": {
+        "thumb": 60,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Requires thumb-to-pinky opposition/contact and suitable fixed orientation; verify physically."
+    },
+    {
+      "name": "ASL number 7",
+      "command": "ASL_NUMBER_7",
+      "category": "ASL numeral prototype",
+      "description": "Thumb touches ring finger while the other fingers extend. Single static numeral shape.",
+      "phrases": [
+        "number 7",
+        "show asl number 7"
+      ],
+      "fingers": {
+        "thumb": 80,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Requires thumb-to-ring opposition/contact and suitable fixed orientation; verify physically."
+    },
+    {
+      "name": "ASL number 8",
+      "command": "ASL_NUMBER_8",
+      "category": "ASL numeral prototype",
+      "description": "Thumb touches middle finger while the other fingers extend. Single static numeral shape.",
+      "phrases": [
+        "number 8",
+        "show asl number 8"
+      ],
+      "fingers": {
+        "thumb": 100,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Requires thumb-to-middle opposition/contact and suitable fixed orientation; verify physically."
+    },
+    {
+      "name": "ASL number 9",
+      "command": "ASL_NUMBER_9",
+      "category": "ASL numeral prototype",
+      "description": "Thumb touches index finger while the other fingers extend. Single static numeral shape.",
+      "phrases": [
+        "number 9",
+        "show asl number 9"
+      ],
+      "fingers": {
+        "thumb": 120,
+        "index": 25,
+        "middle": 25,
+        "ring": 25,
+        "pinky": 25
+      },
+      "reference_url": "https://www.lifeprint.com/asl101/pages-signs/n/numbers1-10.htm",
+      "reference_note": "Requires thumb-to-index opposition/contact and suitable fixed orientation; verify physically."
+    },
+    {
+      "name": "Finger gun gesture",
+      "command": "FINGER_GUN",
+      "category": "nonverbal gesture",
+      "description": "Index and thumb extend; other fingers curl. A nonverbal pose, not an ASL word.",
+      "phrases": [
+        "finger gun",
+        "show finger gun gesture"
+      ],
+      "fingers": {
+        "thumb": 25,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "",
+      "reference_note": "Thumb direction depends on hand construction and fixed palm orientation."
+    },
+    {
+      "name": "Index point gesture",
+      "command": "INDEX_POINT",
+      "category": "nonverbal gesture",
+      "description": "Index extends while the other fingers curl. A generic point, not an ASL word.",
+      "phrases": [
+        "point with index",
+        "show index point gesture"
+      ],
+      "fingers": {
+        "thumb": 145,
+        "index": 25,
+        "middle": 145,
+        "ring": 145,
+        "pinky": 145
+      },
+      "reference_url": "",
+      "reference_note": "Static pointing pose; direction is fixed by hand mounting."
+    }
   ]
 }

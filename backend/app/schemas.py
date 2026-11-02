@@ -30,3 +30,6 @@ class GestureUpdate(BaseModel):
     description: str = Field(default="", max_length=160)
     phrases: list[str] = Field(min_length=1, max_length=20)
     fingers: dict[str, int]
+    category: str = Field(default="prototype", max_length=40)
+    reference_url: str = Field(default="", max_length=500)
+    reference_note: str = Field(default="", max_length=240)

@@ -1,7 +1,7 @@
 /*
   HandControl ESP32 firmware
   Protocol over USB serial at 115200 baud:
-    OPEN_HAND / CLOSE_HAND / HELLO / HELP / THANK_YOU / YES / NO / STOP
+    POSE <ID> <thumb> <index> <middle> <ring> <pinky>
     SET <THUMB|INDEX|MIDDLE|RING|PINKY> <angle-degrees>
 
   Uses an Adafruit PCA9685 PWM driver over I2C. Servo endpoints are deliberately
@@ -46,26 +46,6 @@ void applyPose(const int pose[5]) {
   for (int i = 0; i < 5; ++i) setFinger(i, pose[i]);
 }
 
-// These are starting examples only. Tune positions for the actual tendon hand.
-void executeCommand(String command) {
-  command.trim();
-  command.toUpperCase();
-  const int OPEN[5] = {25, 25, 25, 25, 25};
-  const int CLOSED[5] = {145, 145, 145, 145, 145};
-  const int HELP_POSE[5] = {95, 30, 145, 145, 145};
-  const int THANKS_POSE[5] = {35, 35, 35, 35, 35};
-  const int NO_POSE[5] = {40, 35, 145, 145, 145};
-
-  if (command == "OPEN_HAND" || command == "HELLO" || command == "STOP") applyPose(OPEN);
-  else if (command == "CLOSE_HAND" || command == "YES") applyPose(CLOSED);
-  else if (command == "HELP") applyPose(HELP_POSE);
-  else if (command == "THANK_YOU") applyPose(THANKS_POSE);
-  else if (command == "NO") applyPose(NO_POSE);
-  else return;
-  Serial.print("OK ");
-  Serial.println(command);
-}
-
 void handleLine(String line) {
   line.trim();
   if (!line.length()) return;
@@ -81,10 +61,13 @@ void handleLine(String line) {
       fields[i] = upper.substring(start, end);
       start = end + 1;
     }
-    const String allowed[] = {"HELLO", "HELP", "THANK_YOU", "YES", "NO", "STOP", "OPEN_HAND", "CLOSE_HAND"};
-    bool knownCommand = false;
-    for (const String &known : allowed) if (fields[1] == known) knownCommand = true;
-    if (!knownCommand) { Serial.println("ERR unknown command"); return; }
+    if (fields[1].length() < 1 || fields[1].length() > 24) { Serial.println("ERR invalid pose id"); return; }
+    for (unsigned int i = 0; i < fields[1].length(); ++i) {
+      char c = fields[1][i];
+      if (!((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')) {
+        Serial.println("ERR invalid pose id"); return;
+      }
+    }
     int pose[5];
     for (int i = 0; i < 5; ++i) {
       char *end = nullptr;
@@ -113,7 +96,7 @@ void handleLine(String line) {
     Serial.print("OK SET "); Serial.print(finger); Serial.print(' '); Serial.println(angle);
     return;
   }
-  executeCommand(upper);
+  Serial.println("ERR use POSE or SET command");
 }
 
 void setup() {

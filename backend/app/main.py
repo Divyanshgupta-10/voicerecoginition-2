@@ -27,6 +27,7 @@ mode = settings.get("mode", "simulator")
 history = deque(maxlen=60)
 clients: set[WebSocket] = set()
 loop = None
+action_lock = asyncio.Lock()
 
 
 async def publish(event):
@@ -56,11 +57,12 @@ async def execute_command(command: str, source: str = "voice", confidence=None, 
         await publish({"type": "error", "message": f"Gesture {command} has invalid finger values; each finger must be between {safe_min}° and {safe_max}°."})
         return None
     try:
-        if mode == "simulator":
-            device_result = simulator.execute(gesture)
-        else:
-            serial_device.send_gesture(gesture)
-            device_result = {"mode": "hardware", "command": command}
+        async with action_lock:
+            if mode == "simulator":
+                device_result = simulator.execute(gesture)
+            else:
+                await asyncio.to_thread(serial_device.send_gesture, gesture)
+                device_result = {"mode": "hardware", "command": command}
     except Exception as exc:
         await publish({"type": "error", "message": f"Command {command} could not be sent: {exc}"})
         return None
@@ -99,7 +101,6 @@ def speech_callback(event):
         return None
     asyncio.run_coroutine_threadsafe(publish(event), loop)
     return None
-
 
 speech = SpeechService(speech_callback, settings)
 
@@ -205,11 +206,12 @@ def serial_ports():
 async def connect_serial(request: SerialRequest):
     global mode
     try:
-        await asyncio.to_thread(serial_device.connect, request.port, int(settings.get("baud_rate", 115200)))
-        mode = "hardware"
-        simulator.connected = False
-        await publish({"type": "status", "status": current_status()})
-        return current_status()
+        async with action_lock:
+            await asyncio.to_thread(serial_device.connect, request.port, int(settings.get("baud_rate", 115200)))
+            mode = "hardware"
+            simulator.connected = False
+            await publish({"type": "status", "status": current_status()})
+            return current_status()
     except Exception as exc:
         raise HTTPException(503, f"Could not connect to {request.port}: {exc}")
 
@@ -217,24 +219,26 @@ async def connect_serial(request: SerialRequest):
 @app.post("/api/serial/disconnect")
 async def disconnect_serial():
     global mode
-    serial_device.disconnect()
-    mode = "simulator"
-    simulator.connected = True
-    await publish({"type": "status", "status": current_status()})
-    return current_status()
+    async with action_lock:
+        serial_device.disconnect()
+        mode = "simulator"
+        simulator.connected = True
+        await publish({"type": "status", "status": current_status()})
+        return current_status()
 
 
 @app.post("/api/mode")
 async def set_mode(request: ModeRequest):
     global mode
-    if request.mode == "hardware" and not serial_device.status()["connected"]:
-        raise HTTPException(409, "Connect an ESP32 serial port before enabling hardware mode")
-    if request.mode == "simulator":
-        serial_device.disconnect()
-        simulator.connected = True
-    mode = request.mode
-    await publish({"type": "status", "status": current_status()})
-    return current_status()
+    async with action_lock:
+        if request.mode == "hardware" and not serial_device.status()["connected"]:
+            raise HTTPException(409, "Connect an ESP32 serial port before enabling hardware mode")
+        if request.mode == "simulator":
+            serial_device.disconnect()
+            simulator.connected = True
+        mode = request.mode
+        await publish({"type": "status", "status": current_status()})
+        return current_status()
 
 
 @app.post("/api/commands")
@@ -251,11 +255,12 @@ async def calibrate(request: FingerRequest):
     if request.angle < safe[0] or request.angle > safe[1]:
         raise HTTPException(422, f"Keep finger angle within safe range {safe[0]}–{safe[1]} degrees")
     try:
-        if mode == "simulator":
-            fingers = simulator.set_finger(request.finger, request.angle)
-        else:
-            serial_device.set_finger(request.finger, request.angle)
-            fingers = {"updated": request.finger, "angle": request.angle}
+        async with action_lock:
+            if mode == "simulator":
+                fingers = simulator.set_finger(request.finger, request.angle)
+            else:
+                await asyncio.to_thread(serial_device.set_finger, request.finger, request.angle)
+                fingers = {"updated": request.finger, "angle": request.angle}
         result = {"type": "calibration.updated", "finger": request.finger, "angle": request.angle, "fingers": fingers}
         await publish(result)
         return result

@@ -1,6 +1,6 @@
 # HandControl — Voice-controlled robotic hand
 
-A local-first college MPMC project that recognizes a **small, predefined English command vocabulary** with offline Vosk and maps those commands to configurable example hand poses. It is not unrestricted speech-to-sign translation, and the sample poses are not a validated ISL dictionary. Tune each pose to your own hand and verify any sign with an ISL instructor before representing it as accurate.
+A local-first college MPMC project with a React/Vite dashboard, FastAPI backend, offline Vosk speech commands, a simulator, optional ESP32/PCA9685 hardware, and a configurable library of **static one-hand poses**. The current library contains 36 static pose presets: an ILY handshape, ASL number prototypes 1–9, 16 individual ASL alphabet handshapes, ordinary fixed gestures, and mechanical test poses. Alphabet entries select one letter handshape only; they do not spell words. It excludes help, hello, yes, no, thank you, and signs that need wrist/arm movement, a second hand, or repeated motion. The phrases select one stored pose; this is not unrestricted speech-to-sign translation. Servo angles are uncalibrated starting targets because the hand has not been built. See [the pose research report](docs/POSE_RESEARCH.md).
 
 The app has a React/Vite dashboard, FastAPI backend, safe simulator, optional USB serial transport, and ESP32 firmware for a PCA9685 servo driver. Simulator mode is the default. The application does not download a model automatically, and it never connects to hardware unless you choose a serial port.
 
@@ -77,10 +77,10 @@ Open the project root in VS Code, press **Ctrl+Shift+P**, choose **Python: Selec
 
 ## Using the dashboard
 
-- Start with **Simulator** mode. Pick a command tile and press **Try gesture**, or start the microphone and say a configured phrase such as “hello”, “please open hand”, or “stop”. Final Vosk results are matched; partial text is displayed only. Empty, unrelated, low-confidence, and ambiguous results do not execute a command.
+- Start with **Simulator** mode. Pick a pose tile and press **Try gesture**, or start the microphone and say “I love you”, “number three”, “okay gesture”, “middle finger”, or “shaka”. Final Vosk results are matched; partial text is displayed only. Empty, unrelated, low-confidence, and ambiguous results do not execute a command.
 - Use the **Gesture library** to inspect aliases. Edit `config/gestures.json` to adjust phrase aliases, command names, descriptions, and each command’s `thumb`, `index`, `middle`, `ring`, and `pinky` servo angles. Restart the backend after direct file edits.
 - The **Finger calibration** sliders move individual fingers in simulator mode or send immediate test positions to hardware mode. **Apply to hand** applies each finger in sequence; **Save pose** updates the selected gesture in `config/gestures.json`. Keep the physical hand unloaded, clear, and at the configured safe range while testing.
-- To connect hardware, connect the ESP32, choose its COM port, and press **Connect device**. Hardware mode sends a newline-terminated `POSE COMMAND thumb index middle ring pinky` line, so the configured gesture angles are used by the firmware. The serial protocol also accepts `SET FINGER ANGLE` for calibration. Disconnect returns the app to simulator mode.
+- To connect hardware, connect the ESP32, choose its COM port, and press **Connect device**. Hardware mode sends a newline-terminated `POSE COMMAND thumb index middle ring pinky` line, waits for the firmware acknowledgement, and reports a firmware rejection or timeout. Pose IDs are validated by the firmware and are not limited to a hard-coded vocabulary. The serial protocol also accepts `SET FINGER ANGLE` for calibration. Disconnect returns the app to simulator mode.
 - The **Command history** shows voice and manual commands, time, and recognition confidence. WebSocket events update the dashboard as they arrive.
 
 ## ESP32 and PCA9685 setup
@@ -92,7 +92,7 @@ Open the project root in VS Code, press **Ctrl+Shift+P**, choose **Python: Selec
 5. Tune `SERVO_MIN_TICK`, `SERVO_MAX_TICK`, and the angle arrays for the actual servo, linkage, and tendon geometry. Begin with the hand unloaded and narrow the range if any tendon reaches a hard stop.
 6. Connect the ESP32 serial monitor once to verify `READY HandControl PCA9685`, then close the monitor before connecting from the dashboard (only one program can own the COM port).
 
-`STOP` maps to the configured open pose in the example firmware. This is not an emergency stop or a substitute for a physical power switch. Servo poses are written as positions; the firmware does not implement force sensing, obstruction detection, or a hardware emergency cutoff. Keep a readily accessible power disconnect during physical tests.
+The open-palm test pose is not an emergency stop or a substitute for a physical power switch. Servo poses are written as positions; the firmware does not implement force sensing, obstruction detection, or a hardware emergency cutoff. Keep a readily accessible power disconnect during physical tests.
 
 ## Configuration and safety notes
 
